@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +29,7 @@ public class Miolo implements Serializable {
     @Column(name="created", insertable = false, updatable = false)
     private Date created;
     
-    @OneToMany(mappedBy = "miolo", targetEntity = OsProducao.class)
+    @ManyToMany(mappedBy = "miolo", targetEntity = OsProducao.class)
     private List<OsProducao> oss = new ArrayList<OsProducao>();
 
     public List<OsProducao> getOss() {
@@ -65,7 +65,7 @@ public class Miolo implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -85,5 +85,9 @@ public class Miolo implements Serializable {
         hash = 83 * hash + (this.cdMiolo != null ? this.cdMiolo.hashCode() : 0);
         return hash;
     }
-    
+
+    @Override
+    public String toString() {
+        return this.dsMiolo;
+    }
 }

@@ -2,13 +2,15 @@ package br.com.idit.persistence.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,6 +18,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "mz_os_producao")
 public class OsProducao implements Serializable {
+
     private static final long serialVersionUID = 86742873123123L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,86 +47,117 @@ public class OsProducao implements Serializable {
     @Column(name = "CREATED")
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
-    
-    @ManyToOne(targetEntity = Papel.class)
-    @JoinColumn(name = "CD_PAPEL")
-    private Papel papel;
-    @ManyToOne(targetEntity = Miolo.class)
-    @JoinColumn(name = "CD_MIOLO")
-    private Miolo miolo;
-    @ManyToOne(targetEntity = Blocos.class)
-    @JoinColumn(name = "CD_BLOCOS")
-    private Blocos blocos;
-    @ManyToOne(targetEntity = CapaDura.class)
-    @JoinColumn(name = "CD_CAPA_DURA")
-    private CapaDura capadura;
-    @ManyToOne(targetEntity = Cadernos.class)
-    @JoinColumn(name = "CD_CADERNOS")
-    private Cadernos cadernos;
-    @ManyToOne(targetEntity = Insercoes.class)
-    @JoinColumn(name = "CD_INSERCOES")
-    private Insercoes insercoes;
-    @ManyToOne(targetEntity = ImpressaoMiolo.class)
-    @JoinColumn(name = "CD_IMPRESSAO_MIOLO")
-    private ImpressaoMiolo impressaomiolo;
-    @ManyToOne(targetEntity = Acabamentos.class)
-    @JoinColumn(name = "CD_ACABAMENTOS")
-    private Acabamentos acabamentos;
 
-    public Acabamentos getAcabamentos() {
+    @ManyToMany(targetEntity = Papel.class)
+    @JoinTable(name = "mz_os_producao_papel", joinColumns = {
+        @JoinColumn( name = "CD_OS_PRODUCAO") }, inverseJoinColumns = {
+        @JoinColumn( name = "CD_PAPEL") } )
+    private List<Papel> papel;
+
+    @ManyToMany(targetEntity = Miolo.class)
+    @JoinTable(name = "mz_os_producao_miolo", joinColumns = {
+        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
+        @JoinColumn( name = "CD_MIOLO" ) } )
+    private List<Miolo> miolo;
+
+    @ManyToMany(targetEntity = Blocos.class)
+    @JoinTable(name = "mz_os_producao_bloco", joinColumns = {
+        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
+        @JoinColumn( name = "CD_BLOCO" ) } )
+    private List<Blocos> blocos;
+
+    @ManyToMany(targetEntity = CapaDura.class)
+    @JoinTable(name = "mz_os_producao_capa_dura", joinColumns = {
+        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
+        @JoinColumn( name = "CD_CAPA_DURA" ) } )
+    private List<CapaDura> capadura;
+
+    @ManyToMany(targetEntity = Cadernos.class)
+    @JoinTable(name = "mz_os_producao_cadernos", joinColumns = {
+        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
+        @JoinColumn( name = "CD_CADERNOS" ) } )
+    private List<Cadernos> cadernos;
+
+    @ManyToMany(targetEntity = Insercoes.class)
+    @JoinTable(name = "mz_os_producao_insercoes", joinColumns = {
+        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
+        @JoinColumn( name = "CD_INSERCOES" ) } )
+    private List<Insercoes> insercoes;
+
+    @ManyToMany(targetEntity = ImpressaoMiolo.class)
+    @JoinTable(name = "mz_os_producao_impressao_miolo", joinColumns = {
+        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
+        @JoinColumn( name = "CD_IMPRESSAO_MIOLO" ) } )
+    private List<ImpressaoMiolo> impressaomiolo;
+
+    @ManyToMany(targetEntity = Acabamentos.class)
+    @JoinTable(name = "mz_os_producao_acabamentos", joinColumns = {
+        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
+        @JoinColumn( name = "CD_ACABAMENTOS" ) } )
+    private List<Acabamentos> acabamentos;
+
+    public List<Acabamentos> getAcabamentos() {
         return acabamentos;
     }
 
-    public void setAcabamentos(Acabamentos acabamentos) {
+    public void setAcabamentos(List<Acabamentos> acabamentos) {
         this.acabamentos = acabamentos;
     }
 
-    public ImpressaoMiolo getImpressaomiolo() {
-        return impressaomiolo;
-    }
-
-    public void setImpressaomiolo(ImpressaoMiolo impressaomiolo) {
-        this.impressaomiolo = impressaomiolo;
-    }
-
-    public Insercoes getInsercoes() {
-        return insercoes;
-    }
-
-    public void setInsercoes(Insercoes insercoes) {
-        this.insercoes = insercoes;
-    }
-
-    public Cadernos getCadernos() {
-        return cadernos;
-    }
-
-    public void setCadernos(Cadernos cadernos) {
-        this.cadernos = cadernos;
-    }
-
-    public CapaDura getCapadura() {
-        return capadura;
-    }
-
-    public void setCapadura(CapaDura capadura) {
-        this.capadura = capadura;
-    }
-
-    public Blocos getBlocos() {
+    public List<Blocos> getBlocos() {
         return blocos;
     }
 
-    public void setBlocos(Blocos blocos) {
+    public void setBlocos(List<Blocos> blocos) {
         this.blocos = blocos;
     }
 
-    public Miolo getMiolo() {
+    public List<Cadernos> getCadernos() {
+        return cadernos;
+    }
+
+    public void setCadernos(List<Cadernos> cadernos) {
+        this.cadernos = cadernos;
+    }
+
+    public List<CapaDura> getCapadura() {
+        return capadura;
+    }
+
+    public void setCapadura(List<CapaDura> capadura) {
+        this.capadura = capadura;
+    }
+
+    public List<ImpressaoMiolo> getImpressaomiolo() {
+        return impressaomiolo;
+    }
+
+    public void setImpressaomiolo(List<ImpressaoMiolo> impressaomiolo) {
+        this.impressaomiolo = impressaomiolo;
+    }
+
+    public List<Insercoes> getInsercoes() {
+        return insercoes;
+    }
+
+    public void setInsercoes(List<Insercoes> insercoes) {
+        this.insercoes = insercoes;
+    }
+
+    public List<Miolo> getMiolo() {
         return miolo;
     }
 
-    public void setMiolo(Miolo miolo) {
+    public void setMiolo(List<Miolo> miolo) {
         this.miolo = miolo;
+    }
+
+    public List<Papel> getPapel() {
+        return papel;
+    }
+
+    public void setPapel(List<Papel> papel) {
+        this.papel = papel;
     }
 
     public OsProducao() {
@@ -238,14 +272,6 @@ public class OsProducao implements Serializable {
         this.created = created;
     }
 
-    public Papel getPapel() {
-        return papel;
-    }
-
-    public void setPapel(Papel papel) {
-        this.papel = papel;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -272,5 +298,4 @@ public class OsProducao implements Serializable {
     public String toString() {
         return "br.com.idit.persistece.entity.MzOsProducao[ cdOsProducao=" + cdOsProducao + " ]";
     }
-    
 }

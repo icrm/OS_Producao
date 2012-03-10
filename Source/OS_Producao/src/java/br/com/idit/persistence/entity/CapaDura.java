@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +29,7 @@ public class CapaDura implements Serializable {
     @Column(name = "created", insertable = false, updatable = false)
     private Date created;
 
-    @OneToMany(mappedBy = "capadura", targetEntity = OsProducao.class)
+    @ManyToMany(mappedBy = "capadura", targetEntity = OsProducao.class)
     private List<OsProducao> oss = new ArrayList<OsProducao>();
 
     public List<OsProducao> getOss() {
@@ -85,7 +85,9 @@ public class CapaDura implements Serializable {
         hash = 61 * hash + (this.cdCapaDura != null ? this.cdCapaDura.hashCode() : 0);
         return hash;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return this.dsCapaDura;
+    }
 }

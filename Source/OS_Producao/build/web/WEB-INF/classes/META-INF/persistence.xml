@@ -6,9 +6,9 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mzlume"/>
-      <property name="javax.persistence.jdbc.password" value="a1234561"/>
+      <property name="javax.persistence.jdbc.password" value="j@8ed39$JDse#8"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.user" value="mz-os-producao"/>
     </properties>
   </persistence-unit>
 </persistence>

@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 @Table(name = "mz_cadernos")
 public class Cadernos implements Serializable{
     private static final long serialVersionUID = 1240712327349283L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cd_cadernos")
@@ -28,8 +28,8 @@ public class Cadernos implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created", insertable = false, updatable = false)
     private Date created;
-    
-    @OneToMany(mappedBy = "cadernos", targetEntity = OsProducao.class)
+
+    @ManyToMany(mappedBy = "cadernos", targetEntity = OsProducao.class)
     private List<OsProducao> oss = new ArrayList<OsProducao>();
 
     public List<OsProducao> getOss() {
@@ -85,7 +85,9 @@ public class Cadernos implements Serializable{
         hash = 73 * hash + (this.cdCadernos != null ? this.cdCadernos.hashCode() : 0);
         return hash;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return this.dsCadernos;
+    }
 }

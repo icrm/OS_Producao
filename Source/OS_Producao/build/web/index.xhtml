@@ -1,36 +1,80 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         Os Producao<br /><br /><br />
-    </h:body>
     
     <form name="OsProducao" action="OsProducao" method="POST">
+        
+        Cliente
+        <h:inputText id="nmCliente" value="" /><br/><br/>
+        
+        Quantidade
+        <h:inputText id="nmCliente" value="" /><br/><br/>
     
         Cadernos<br /><br />
         
-        <input type="radio" name="DS_CADERNOS" value="210X280" />210X280<br />
-        <input type="radio" name="DS_CADERNOS" value="180X250" />180X250<br />
-        <input type="radio" name="DS_CADERNOS" value="200X230" />200X230<br />
-        <input type="radio" name="DS_CADERNOS" value="150X210" />150X210<br />
-        <input type="radio" name="DS_CADERNOS" value="Outros" />Outros&nbsp;&nbsp;&nbsp;
-            <input type="text" name="DS_CADERNOS_OUTROS" value="" size="40" /> <br />
-
-        <br /><br />Blocos<br /><br />
+        <h:selectManyCheckbox value="">
+            <f:selectItems value="#{cadernoBean.listItems}" />
+        </h:selectManyCheckbox>
+        <br />
         
-        <input type="radio" name="DS_BLOCOS" value="150X210" />150X210<br />
-        <input type="radio" name="DS_BLOCOS" value="100X150" />100X150<br />
-        <input type="radio" name="DS_BLOCOS" value="Outros" />Outros&nbsp;&nbsp;&nbsp;
-            <input type="text" name="DS_BLOCOS_OUTROS" value="" size="40" /> <br />
+        Blocos<br /><br />
+        
+        <h:selectManyCheckbox value="">
+            <f:selectItems value="#{blocoBean.listItems}" />
+        </h:selectManyCheckbox><br />
 
-        <input type="submit" value="Salvar" name="Salvar" />
-            
+        Acabamentos<br /><br />
+        
+        <h:selectManyCheckbox value="">
+            <f:selectItems value="#{acabamentoBean.listItems}" />
+        </h:selectManyCheckbox><br />
+        
+        Miolo<br /><br />
+        
+        <h:selectManyCheckbox value="">
+            <f:selectItems value="#{mioloBean.listItems}" />
+        </h:selectManyCheckbox><br />
+        
+        Impressão / Miolo<br /><br />
+        
+        <h:selectManyCheckbox value="">
+            <f:selectItems value="#{impressaoMioloBean.listItems}" />
+        </h:selectManyCheckbox><br />
+        
+        Papel<br /><br />
+        
+        <h:selectManyCheckbox value="">
+            <f:selectItems value="#{papelBean.listItems}" />
+        </h:selectManyCheckbox><br />
+        
+        Capa Dura<br /><br />
+        
+        <h:selectManyCheckbox value="">
+            <f:selectItems value="#{capaDuraBean.listItems}" />
+        </h:selectManyCheckbox><br />
+        
+        Inserções<br /><br />
+        
+        <h:selectManyCheckbox value="">
+            <f:selectItems value="#{insercaoBean.listItems}" />
+        </h:selectManyCheckbox><br />
+
+        Responsável
+        <h:inputText id="nmResponsavel" value="" /><br/><br/>
+        
+        Resp. Gráfica
+        <h:inputText id="nmRespGrafica" value="" /><br/><br/>
+        
     </form>
         
-        
+</h:body>        
 </html>
 

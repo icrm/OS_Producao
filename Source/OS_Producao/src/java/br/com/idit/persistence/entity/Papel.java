@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +29,7 @@ public class Papel implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
-    @OneToMany(mappedBy = "papel", targetEntity = OsProducao.class)
+    @ManyToMany(mappedBy = "papel", targetEntity = OsProducao.class)
     private List<OsProducao> oss = new ArrayList<OsProducao>();
 
     public Long getCdPapel() {
@@ -84,5 +84,10 @@ public class Papel implements Serializable {
         int hash = 5;
         hash = 41 * hash + (this.cdPapel != null ? this.cdPapel.hashCode() : 0);
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return this.dsPapel;
     }
 }

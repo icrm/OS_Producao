@@ -8,5 +8,5 @@ public class MioloDAO extends AbstractDAO<Miolo> {
     protected Class<Miolo> getDomainClass() {
         return Miolo.class;
     }
-        
+
 }

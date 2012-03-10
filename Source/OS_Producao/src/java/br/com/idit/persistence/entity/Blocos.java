@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +29,7 @@ public class Blocos implements Serializable {
     @Column(name = "created", insertable = false, updatable = false)
     private Date created;
     
-    @OneToMany(mappedBy = "blocos", targetEntity = OsProducao.class)
+    @ManyToMany(mappedBy = "blocos", targetEntity = OsProducao.class)
     private List<OsProducao> oss = new ArrayList<OsProducao>();
 
     public List<OsProducao> getOss() {
@@ -85,5 +85,9 @@ public class Blocos implements Serializable {
         hash = 29 * hash + (this.cdBlocos != null ? this.cdBlocos.hashCode() : 0);
         return hash;
     }
-    
+
+    @Override
+    public String toString() {
+        return this.dsBlocos;
+    }
 }
