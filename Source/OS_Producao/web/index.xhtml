@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>OS Produção</title>
         <h:outputStylesheet library="css" name="padrao.css" />
         <h:outputStylesheet library="css" name="estilos.css" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/print.css" media="print" />
@@ -106,8 +106,8 @@
                     <hr />
                     
                     <h3>Inser&ccedil;&otilde;es Publicit&aacute;rias</h3>
-                    <h:inputText id="dsLaminas" value="#{osProducaoBean.os.qtIpLaminas}" styleClass="input" style="width: 50px;"/><h:outputLabel for="dsLaminas" value="LAMINAS" />
-                    <h:inputText id="dsCores" value="#{osProducaoBean.os.dsIpCores}" styleClass="input" style="width: 50px;"/><h:outputLabel for="dsCores" value="CORES" />
+                    <h:inputText id="dsLaminas" value="#{osProducaoBean.os.qtIpLaminas}" styleClass="input" style="width: 80px;"/><h:outputLabel for="dsLaminas" value="LAMINAS" />
+                    <h:inputText id="dsCores" value="#{osProducaoBean.os.dsIpCores}" styleClass="input" style="width: 80px;"/><h:outputLabel for="dsCores" value="CORES" />
                     
                     <hr />
                     
@@ -125,7 +125,7 @@
 
                 <h:commandButton action="#{osProducaoBean.insertOS}" value="Salvar OS" />
                 <h:commandButton action="#{osProducaoBean.newOS}" value="Nova OS" />
-                <h:commandButton action="#" value="Gerar PDF" onclick="window.print(); return null;" />
+                <h:commandButton action="#" value="Gerar PDF" onclick="window.print(); return false;" />
 
             </h:form>
         </div>
