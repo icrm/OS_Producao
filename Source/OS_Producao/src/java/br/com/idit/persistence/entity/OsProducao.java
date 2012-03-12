@@ -29,7 +29,7 @@ public class OsProducao implements Serializable {
     @Column(name = "NU_QUANTIDADE")
     private int nuQuantidade;
     @Column(name = "FG_PERCALUX")
-    private Character fgPercalux;
+    private String fgPercalux;
     @Column(name = "DS_COR_PERCALUX")
     private String dsCorPercalux;
     @Column(name = "DS_GRV_PERCALUX")
@@ -40,6 +40,20 @@ public class OsProducao implements Serializable {
     private String dsIpCores;
     @Column(name = "DS_OUT_INFORMACOES")
     private String dsOutInformacoes;
+    @Column(name = "DS_OUT_CADERNOS")
+    private String dsOutCadernos;
+    @Column(name = "DS_OUT_BLOCOS")
+    private String dsOutBlocos;
+    @Column(name = "DS_OUT_ACABAMENTOS")
+    private String dsOutAcabamentos;
+    @Column(name = "DS_OUT_MIOLOS")
+    private String dsOutMiolos;
+    @Column(name = "DS_OUT_IMPRESSAO_MIOLO")
+    private String dsOutImpressaoMiolo;
+    @Column(name = "DS_OUT_PAPEIS")
+    private String dsOutPapeis;
+    @Column(name = "DS_OUT_INSERCOES")
+    private String dsOutInsercoes;
     @Column(name = "DS_RESPONSAVEL")
     private String dsResponsavel;
     @Column(name = "DS_GRAF_RESPONSAVEL")
@@ -47,53 +61,45 @@ public class OsProducao implements Serializable {
     @Column(name = "CREATED")
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
-
     @ManyToMany(targetEntity = Papel.class)
     @JoinTable(name = "mz_os_producao_papel", joinColumns = {
-        @JoinColumn( name = "CD_OS_PRODUCAO") }, inverseJoinColumns = {
-        @JoinColumn( name = "CD_PAPEL") } )
+        @JoinColumn(name = "CD_OS_PRODUCAO")}, inverseJoinColumns = {
+        @JoinColumn(name = "CD_PAPEL")})
     private List<Papel> papel;
-
     @ManyToMany(targetEntity = Miolo.class)
     @JoinTable(name = "mz_os_producao_miolo", joinColumns = {
-        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
-        @JoinColumn( name = "CD_MIOLO" ) } )
+        @JoinColumn(name = "CD_OS_PRODUCAO")}, inverseJoinColumns = {
+        @JoinColumn(name = "CD_MIOLO")})
     private List<Miolo> miolo;
-
     @ManyToMany(targetEntity = Blocos.class)
-    @JoinTable(name = "mz_os_producao_bloco", joinColumns = {
-        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
-        @JoinColumn( name = "CD_BLOCO" ) } )
+    @JoinTable(name = "mz_os_producao_blocos", joinColumns = {
+        @JoinColumn(name = "CD_OS_PRODUCAO")}, inverseJoinColumns = {
+        @JoinColumn(name = "CD_BLOCOS")})
     private List<Blocos> blocos;
-
     @ManyToMany(targetEntity = CapaDura.class)
     @JoinTable(name = "mz_os_producao_capa_dura", joinColumns = {
-        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
-        @JoinColumn( name = "CD_CAPA_DURA" ) } )
+        @JoinColumn(name = "CD_OS_PRODUCAO")}, inverseJoinColumns = {
+        @JoinColumn(name = "CD_CAPA_DURA")})
     private List<CapaDura> capadura;
-
     @ManyToMany(targetEntity = Cadernos.class)
     @JoinTable(name = "mz_os_producao_cadernos", joinColumns = {
-        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
-        @JoinColumn( name = "CD_CADERNOS" ) } )
+        @JoinColumn(name = "CD_OS_PRODUCAO")}, inverseJoinColumns = {
+        @JoinColumn(name = "CD_CADERNOS")})
     private List<Cadernos> cadernos;
-
     @ManyToMany(targetEntity = Insercoes.class)
     @JoinTable(name = "mz_os_producao_insercoes", joinColumns = {
-        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
-        @JoinColumn( name = "CD_INSERCOES" ) } )
+        @JoinColumn(name = "CD_OS_PRODUCAO")}, inverseJoinColumns = {
+        @JoinColumn(name = "CD_INSERCOES")})
     private List<Insercoes> insercoes;
-
     @ManyToMany(targetEntity = ImpressaoMiolo.class)
     @JoinTable(name = "mz_os_producao_impressao_miolo", joinColumns = {
-        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
-        @JoinColumn( name = "CD_IMPRESSAO_MIOLO" ) } )
+        @JoinColumn(name = "CD_OS_PRODUCAO")}, inverseJoinColumns = {
+        @JoinColumn(name = "CD_IMPRESSAO_MIOLO")})
     private List<ImpressaoMiolo> impressaomiolo;
-
     @ManyToMany(targetEntity = Acabamentos.class)
     @JoinTable(name = "mz_os_producao_acabamentos", joinColumns = {
-        @JoinColumn( name = "CD_OS_PRODUCAO" ) }, inverseJoinColumns = {
-        @JoinColumn( name = "CD_ACABAMENTOS" ) } )
+        @JoinColumn(name = "CD_OS_PRODUCAO")}, inverseJoinColumns = {
+        @JoinColumn(name = "CD_ACABAMENTOS")})
     private List<Acabamentos> acabamentos;
 
     public List<Acabamentos> getAcabamentos() {
@@ -160,6 +166,62 @@ public class OsProducao implements Serializable {
         this.papel = papel;
     }
 
+    public String getDsOutAcabamentos() {
+        return dsOutAcabamentos;
+    }
+
+    public void setDsOutAcabamentos(String dsOutAcabamentos) {
+        this.dsOutAcabamentos = dsOutAcabamentos;
+    }
+
+    public String getDsOutBlocos() {
+        return dsOutBlocos;
+    }
+
+    public void setDsOutBlocos(String dsOutBlocos) {
+        this.dsOutBlocos = dsOutBlocos;
+    }
+
+    public String getDsOutCadernos() {
+        return dsOutCadernos;
+    }
+
+    public void setDsOutCadernos(String dsOutCadernos) {
+        this.dsOutCadernos = dsOutCadernos;
+    }
+
+    public String getDsOutImpressaoMiolo() {
+        return dsOutImpressaoMiolo;
+    }
+
+    public void setDsOutImpressaoMiolo(String dsOutImpressaoMiolo) {
+        this.dsOutImpressaoMiolo = dsOutImpressaoMiolo;
+    }
+
+    public String getDsOutInsercoes() {
+        return dsOutInsercoes;
+    }
+
+    public void setDsOutInsercoes(String dsOutInsercoes) {
+        this.dsOutInsercoes = dsOutInsercoes;
+    }
+
+    public String getDsOutMiolos() {
+        return dsOutMiolos;
+    }
+
+    public void setDsOutMiolos(String dsOutMiolos) {
+        this.dsOutMiolos = dsOutMiolos;
+    }
+
+    public String getDsOutPapeis() {
+        return dsOutPapeis;
+    }
+
+    public void setDsOutPapeis(String dsOutPapeis) {
+        this.dsOutPapeis = dsOutPapeis;
+    }
+
     public OsProducao() {
     }
 
@@ -200,11 +262,11 @@ public class OsProducao implements Serializable {
         this.nuQuantidade = nuQuantidade;
     }
 
-    public Character getFgPercalux() {
+    public String getFgPercalux() {
         return fgPercalux;
     }
 
-    public void setFgPercalux(Character fgPercalux) {
+    public void setFgPercalux(String fgPercalux) {
         this.fgPercalux = fgPercalux;
     }
 

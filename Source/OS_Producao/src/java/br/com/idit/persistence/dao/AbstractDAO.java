@@ -5,7 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public abstract class AbstractDAO<T> implements Serializable {
 
@@ -61,6 +63,26 @@ public abstract class AbstractDAO<T> implements Serializable {
     public final T findById(final Object id) {
         final EntityManager entity = this.getEntityManager();
         final T selected = (T) entity.find(this.getDomainClass(), id);
+        return selected;
+    }
+
+    public final T findByField(final String field, final Class fieldType, final String value) {
+        final EntityManager entity = this.getEntityManager();
+        final CriteriaBuilder cbuilder = entity.getCriteriaBuilder();
+        final CriteriaQuery criteria = cbuilder.createQuery(this.getDomainClass());
+        final Root<T> root = criteria.from(this.getDomainClass());
+
+        criteria.where(cbuilder.equal(root.get(root.getModel()
+                .getSingularAttribute(field, fieldType)), value));
+
+        T selected = null;
+        try {
+            selected = (T) getEntityManager().createQuery(criteria)
+                    .getSingleResult();
+        } catch (RuntimeException ex) {
+            ex.printStackTrace();
+        }
+
         return selected;
     }
 }

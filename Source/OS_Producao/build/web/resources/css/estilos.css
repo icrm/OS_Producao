@@ -1,0 +1,13 @@
+table.chk { display: inline; }
+table.chk td { padding-right: 20px; }
+
+.input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px #000000 solid;
+    font-size: 1.5em;
+    margin-left: 5px;
+}
+
+hr { margin: 20px 0; }

@@ -1,80 +1,135 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='ISO-8859-1' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="padrao.css" />
+        <h:outputStylesheet library="css" name="estilos.css" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/print.css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     </h:head>
     <h:body>
-        Os Producao<br /><br /><br />
-    
-    <form name="OsProducao" action="OsProducao" method="POST">
-        
-        Cliente
-        <h:inputText id="nmCliente" value="" /><br/><br/>
-        
-        Quantidade
-        <h:inputText id="nmCliente" value="" /><br/><br/>
-    
-        Cadernos<br /><br />
-        
-        <h:selectManyCheckbox value="">
-            <f:selectItems value="#{cadernoBean.listItems}" />
-        </h:selectManyCheckbox>
-        <br />
-        
-        Blocos<br /><br />
-        
-        <h:selectManyCheckbox value="">
-            <f:selectItems value="#{blocoBean.listItems}" />
-        </h:selectManyCheckbox><br />
 
-        Acabamentos<br /><br />
-        
-        <h:selectManyCheckbox value="">
-            <f:selectItems value="#{acabamentoBean.listItems}" />
-        </h:selectManyCheckbox><br />
-        
-        Miolo<br /><br />
-        
-        <h:selectManyCheckbox value="">
-            <f:selectItems value="#{mioloBean.listItems}" />
-        </h:selectManyCheckbox><br />
-        
-        Impress√£o / Miolo<br /><br />
-        
-        <h:selectManyCheckbox value="">
-            <f:selectItems value="#{impressaoMioloBean.listItems}" />
-        </h:selectManyCheckbox><br />
-        
-        Papel<br /><br />
-        
-        <h:selectManyCheckbox value="">
-            <f:selectItems value="#{papelBean.listItems}" />
-        </h:selectManyCheckbox><br />
-        
-        Capa Dura<br /><br />
-        
-        <h:selectManyCheckbox value="">
-            <f:selectItems value="#{capaDuraBean.listItems}" />
-        </h:selectManyCheckbox><br />
-        
-        Inser√ß√µes<br /><br />
-        
-        <h:selectManyCheckbox value="">
-            <f:selectItems value="#{insercaoBean.listItems}" />
-        </h:selectManyCheckbox><br />
+        <div id="container">
+            <h:form>
 
-        Respons√°vel
-        <h:inputText id="nmResponsavel" value="" /><br/><br/>
-        
-        Resp. Gr√°fica
-        <h:inputText id="nmRespGrafica" value="" /><br/><br/>
-        
-    </form>
-        
-</h:body>        
+                <div id="toPrint">
+                    <h3 style="display: inline;">Cliente</h3>
+                    <h:inputText id="dsCliente" value="#{osProducaoBean.os.dsCliente}" style="width: 500px;" styleClass="input"/>
+
+                    <h3 style="display: inline;">Quantidade</h3>
+                    <h:inputText id="nuQuantidade" value="#{osProducaoBean.os.nuQuantidade}" style="width: 200px;" styleClass="input"/><br/><br/>
+
+                    <h3>Cadernos</h3>
+                    <h:selectManyCheckbox value="#{osProducaoBean.os.cadernos}" styleClass="chk">
+                        <f:selectItems value="#{cadernoBean.listItems}" />
+                        <f:converter converterId="cadernoConverter" />
+                    </h:selectManyCheckbox>
+
+                    <h:inputText id="outrosCadernos" value="#{osProducaoBean.os.dsOutCadernos}" styleClass="input" style="width: 300px;"/>
+
+                    <hr />
+
+                    <h3>Blocos</h3>
+                    <h:selectManyCheckbox value="#{osProducaoBean.os.blocos}" styleClass="chk">
+                        <f:selectItems value="#{blocoBean.listItems}" />
+                        <f:converter converterId="blocoConverter" />
+                    </h:selectManyCheckbox>
+
+                    <h:inputText id="outrosBlocos" value="#{osProducaoBean.os.dsOutBlocos}" styleClass="input" style="width: 300px;"/>
+
+                    <hr />
+
+                    <h3>Acabamentos</h3>
+                    <h:selectManyCheckbox value="#{osProducaoBean.os.acabamentos}" styleClass="chk">
+                        <f:selectItems value="#{acabamentoBean.listItems}" />
+                        <f:converter converterId="acabamentoConverter" />
+                    </h:selectManyCheckbox>
+
+                    <h:inputText id="outrosAcabamentos" value="#{osProducaoBean.os.dsOutAcabamentos}" styleClass="input" style="width: 300px;"/>
+
+                    <hr />
+
+                    <h3>Miolo</h3>
+                    <h:selectManyCheckbox value="#{osProducaoBean.os.miolo}" styleClass="chk">
+                        <f:selectItems value="#{mioloBean.listItems}" />
+                        <f:converter converterId="mioloConverter" />
+                    </h:selectManyCheckbox>
+
+                    <h:inputText id="outrosMiolos" value="#{osProducaoBean.os.dsOutMiolos}" styleClass="input" style="width: 300px;"/>
+
+                    <hr />
+
+                    <h3>Impress&atilde;o / Miolo</h3>
+                    <h:selectManyCheckbox value="#{osProducaoBean.os.impressaomiolo}" styleClass="chk">
+                        <f:selectItems value="#{impressaoMioloBean.listItems}" />
+                        <f:converter converterId="impressaoMioloConverter" />
+                    </h:selectManyCheckbox>
+
+                    <h:inputText id="outrosImpressoesMiolo" value="#{osProducaoBean.os.dsOutImpressaoMiolo}" styleClass="input" style="width: 300px;"/>
+
+                    <hr />
+
+                    <h3>Papel</h3>
+                    <h:selectManyCheckbox value="#{osProducaoBean.os.papel}" styleClass="chk">
+                        <f:selectItems value="#{papelBean.listItems}" />
+                        <f:converter converterId="papelConverter" />
+                    </h:selectManyCheckbox>
+
+                    <h:inputText id="outrosPapeis" value="#{osProducaoBean.os.dsOutPapeis}" styleClass="input" style="width: 300px;"/>
+
+                    <hr />
+                    <h:selectBooleanCheckbox id="fgPercalux" value="#{osProducaoBean.fgPercalux}" /><h:outputLabel for="fgPercalux" value="PERCALUX" /><br />
+                    <h:outputLabel for="dsCorPercalux" value="COR PERCALUX" /><h:inputText id="dsCorPercalux" value="#{osProducaoBean.os.dsCorPercalux}" styleClass="input" style="width: 300px;"/>
+                    <h:outputLabel for="dsGravacaoPercalux" value="GRAVA«√O PERCALUX" /><h:inputText id="dsGravacaoPercalux" value="#{osProducaoBean.os.dsGrvPercalux}" styleClass="input" style="width: 300px;"/>
+                    
+                    <hr />
+
+                    <h3>Capa Dura</h3>
+                    <h:selectManyCheckbox value="#{osProducaoBean.os.capadura}" styleClass="chk">
+                        <f:selectItems value="#{capaDuraBean.listItems}" />
+                        <f:converter converterId="capaDuraConverter" />
+                    </h:selectManyCheckbox><br />
+
+                    <hr />
+
+                    <h3>Inser&ccedil;&otilde;es</h3>
+                    <h:selectManyCheckbox value="#{osProducaoBean.os.insercoes}" styleClass="chk">
+                        <f:selectItems value="#{insercaoBean.listItems}" />
+                        <f:converter converterId="insercaoConverter" />
+                    </h:selectManyCheckbox>
+
+                    <h:inputText id="outrosInsercoes" value="#{osProducaoBean.os.dsOutInsercoes}" styleClass="input" style="width: 300px;"/>
+
+                    <hr />
+                    
+                    <h3>Inser&ccedil;&otilde;es Publicit&aacute;rias</h3>
+                    <h:inputText id="dsLaminas" value="#{osProducaoBean.os.qtIpLaminas}" styleClass="input" style="width: 50px;"/><h:outputLabel for="dsLaminas" value="LAMINAS" />
+                    <h:inputText id="dsCores" value="#{osProducaoBean.os.dsIpCores}" styleClass="input" style="width: 50px;"/><h:outputLabel for="dsCores" value="CORES" />
+                    
+                    <hr />
+                    
+                    <h3>Outras Informa&ccedil;&otilde;es</h3>
+                    <h:inputTextarea id="dsInformacoes" value="#{osProducaoBean.os.dsOutInformacoes}" style="width: 100%; height: 100px;"/>
+                    
+                    <hr />
+
+                    <h3 style="display: inline;">Respons&aacute;vel</h3>
+                    <h:inputText id="nmResponsavel" value="#{osProducaoBean.os.dsResponsavel}" styleClass="input"/>
+
+                    <h3 style="display: inline;">Resp. Gr·fica</h3>
+                    <h:inputText id="nmRespGrafica" value="#{osProducaoBean.os.dsGrafResponsavel}" styleClass="input"/><br /><br />
+                </div>
+
+                <h:commandButton action="#{osProducaoBean.insertOS}" value="Salvar OS" />
+                <h:commandButton action="#{osProducaoBean.newOS}" value="Nova OS" />
+                <h:commandButton action="#" value="Gerar PDF" onclick="window.print(); return null;" />
+
+            </h:form>
+        </div>
+
+    </h:body>        
 </html>
 

@@ -1,0 +1,39 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica;
+}
+
+html { text-align: center; }
+
+#container {
+    margin: 0 auto;
+    text-align: left;
+    width: 940px;
+}
+
+.fullwidth {
+    width: 940px;
+    margin:0 0 28px 0;
+    position: relative;
+}
+
+.one_half, .two_fourth { width: 460px; }
+.one_third { width: 300px; }
+.two_third { width: 620px; }
+.one_fourth { width: 220px; }
+.three_fourth { width: 700px; }
+
+.last { margin-right: 0px !important; }
+
+.one_half, .one_third, .two_third {
+    float: left;
+    margin:0 20px 28px 0;
+    position: relative;
+}
+
+.one_fourth, .two_fourth, .three_fourth {
+    float: left;
+    margin:0 20px 28px 0;
+    position: relative;
+}

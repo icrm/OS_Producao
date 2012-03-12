@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "acabamentoBean")
-@ViewScoped
+@RequestScoped
 public class AcabemntoBean extends AbstractBean<Acabamentos> {
     
     private static final long serialVersionUID = 988312039948234L;

@@ -7,16 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "osProducaoBean")
-@ViewScoped
+@RequestScoped
 public class OsProducaoBean extends AbstractBean<OsProducao> {
-    
+
     private static final long serialVersionUID = 345472349283491823L;
     private OsProducaoDAO dao = new OsProducaoDAO();
     private OsProducao os = new OsProducao();
     private List<OsProducao> oss = new ArrayList<OsProducao>();
+    private boolean fgPercalux;
 
     public OsProducao getOs() {
         return os;
@@ -52,5 +53,25 @@ public class OsProducaoBean extends AbstractBean<OsProducao> {
     @Override
     protected OsProducao getPersistObject() {
         return this.os;
+    }
+
+    public void insertOS() {
+        if (fgPercalux) {
+            this.os.setFgPercalux("S");
+        }
+        this.insert();
+    }
+    
+    public void newOS() {
+        this.os = new OsProducao();
+        this.fgPercalux = false;
+    }
+
+    public boolean isFgPercalux() {
+        return fgPercalux;
+    }
+
+    public void setFgPercalux(boolean fgPercalux) {
+        this.fgPercalux = fgPercalux;
     }
 }

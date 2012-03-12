@@ -9,6 +9,7 @@
       <property name="javax.persistence.jdbc.password" value="j@8ed39$JDse#8"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.user" value="mz-os-producao"/>
+      <property name="eclipselink.logging.level" value="FINE"/>
     </properties>
   </persistence-unit>
 </persistence>

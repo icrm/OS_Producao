@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "mioloBean")
-@ViewScoped
+@RequestScoped
 public class MioloBean extends AbstractBean<Miolo> {
 
     private static final long serialVersionUID = 763428123897873234L;

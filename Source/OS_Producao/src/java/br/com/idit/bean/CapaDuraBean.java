@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "capaDuraBean")
-@ViewScoped
+@RequestScoped
 public class CapaDuraBean extends AbstractBean<CapaDura> {
     
     private static final long serialVersionUID = 6342347987662381279L;

@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "cadernoBean")
-@ViewScoped
+@RequestScoped
 public class CadernoBean extends AbstractBean<Cadernos> {
 
     private static final long serialVersionUID = 872342712379863L;

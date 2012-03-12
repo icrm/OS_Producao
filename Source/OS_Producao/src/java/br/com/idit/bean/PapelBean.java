@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "papelBean")
-@ViewScoped
+@RequestScoped
 public class PapelBean extends AbstractBean<Papel> {
     
     private static final long serialVersionUID = 6237491801923093423L;
